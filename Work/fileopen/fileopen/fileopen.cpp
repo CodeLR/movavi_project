@@ -1,11 +1,32 @@
 ﻿#include <iostream>
 #include <stdio.h>
+#include <filesystem>
 #include <string.h>
 using namespace std;
+void MyFile(const char*);
 int main()
 {
-    const char* name = "‪C:/qtProject/Work/fileopen/text.txt";
-    FILE* fp=fopen("C:/qtProject/Work/fileopen/mytext.txt" , "w");
-    // написать исключение по файлу
-    fclose(fp);
+	try
+	{
+		MyFile("C:/qtProject/Work/fileopen/mytext.txt");
+		//MyFile("Ваша директория");
+	}
+	catch (invalid_argument&e)
+	{
+		cerr << e.what() << endl;
+		cout << "Exeption";
+		return -1;
+	}
+}
+void MyFile(const char * name)
+{
+	FILE* fp = fopen(name, "w");
+	if (name == "") {
+		throw invalid_argument("argument");
+	}
+	else {
+		fprintf(fp, "Rodion Loskutov");
+	}
+	// возможны и другие проверки
+	fclose(fp);
 }
