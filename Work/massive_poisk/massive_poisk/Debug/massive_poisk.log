@@ -1,5 +1,5 @@
 ﻿  massive_poisk.cpp
 C:\qtProject\Work\massive_poisk\massive_poisk\massive_poisk.cpp(27,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\qtProject\Work\massive_poisk\massive_poisk\massive_poisk.cpp(29,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\qtProject\Work\massive_poisk\massive_poisk\massive_poisk.cpp(38,31): warning C4018: <: несоответствие типов со знаком и без знака
+C:\qtProject\Work\massive_poisk\massive_poisk\massive_poisk.cpp(32,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\qtProject\Work\massive_poisk\massive_poisk\massive_poisk.cpp(34,27): warning C4018: <: несоответствие типов со знаком и без знака
   massive_poisk.vcxproj -> C:\qtProject\Work\massive_poisk\Debug\massive_poisk.exe

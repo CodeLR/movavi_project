@@ -1,2 +1,0 @@
-# movavi_project
-C++ 

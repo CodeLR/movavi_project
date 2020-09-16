@@ -10,6 +10,12 @@
 #include <QVBoxLayout>
 #include <QPointer>
 #include <QPixmap>
+
+
+//using namespace cv;
+using namespace std;
+
+
 class Frame:public QFrame
 {
     Q_OBJECT
@@ -17,6 +23,7 @@ private:
 
     QLabel* file;
     QLabel* layer;
+
 
 
 

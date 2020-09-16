@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include <QDebug>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -59,7 +60,9 @@ void MainWindow::OpenFile()
                 return;
             }
             emit fileSignal(fileName);
+
     }
+
 }
 
 void MainWindow::SettingsSlot()

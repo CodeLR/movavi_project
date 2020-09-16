@@ -1,3 +1,5 @@
 ﻿  fileopen.cpp
-C:\qtProject\Work\fileopen\fileopen\fileopen.cpp(7,24): warning C4566: символ, представленный универсальным именем символа "\u202A", невозможно представить в текущей кодовой странице (1251)
+  The contents of <filesystem> are available only with C++17 or later.
+C:\qtProject\Work\fileopen\fileopen\fileopen.cpp(16,15): warning C4101: f: неиспользованная локальная переменная
+C:\qtProject\Work\fileopen\fileopen\fileopen.cpp(22,32): warning C4101: s: неиспользованная локальная переменная
   fileopen.vcxproj -> C:\qtProject\Work\fileopen\Debug\fileopen.exe

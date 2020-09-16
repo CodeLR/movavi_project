@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-const int magicSize = 10;
+const int magicSize = 2;
 int CastingSize(int,int);
 int main()
 {
@@ -13,8 +13,11 @@ int CastingSize(int w,int h)
 {
     int countImage = 0;
     while (h >= magicSize && w >= magicSize){
-        w = w / magicSize;
-        h = h / magicSize;
+
+        w = (w / magicSize) / magicSize;
+;
+        h = (h / magicSize) / magicSize;
+        
         ++countImage;
     }
     return countImage;

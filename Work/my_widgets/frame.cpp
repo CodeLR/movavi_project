@@ -2,6 +2,8 @@
 #include <QDebug>
 #include <iostream>
 #include <QAbstractScrollArea>
+
+
 Frame::Frame(QWidget* parent):QFrame(parent)
 {
     gridLayout=new QGridLayout(this);
@@ -65,14 +67,20 @@ void Frame::CreateSizeImage(QVector<QPixmap*>&_vec) // изменяем и за�
 {
     int sizeCount=2;
     int i=0;
-
-    while(_vec[i]->width()>150 && _vec[i]->height()>200){
+    while(true){
+        //qDebug()<<_vec[i]->width()<<" "<<_vec[i]->height();
         QSize size(_vec[i]->width()/dynamicSizeImage,_vec[i]->height()/dynamicSizeImage);
-        _vec.push_back(new QPixmap(_vec[i]->scaled(size,Qt::KeepAspectRatio)));
-        numberSizeImages[sizeVec].push_back(sizeCount);
-        boxLayer->addItem(QString::number(numberSizeImages[sizeVec][i]));
-        sizeCount+=2;
-        ++i;
+        size=size/dynamicSizeImage;
+        if(size.width()<250 && size.height()<300)
+        {
+            break;
+        }else{
+            _vec.push_back(new QPixmap(_vec[i]->scaled(size,Qt::KeepAspectRatio)));
+            numberSizeImages[sizeVec].push_back(sizeCount);
+            boxLayer->addItem(QString::number(numberSizeImages[sizeVec][i]));
+            sizeCount+=2;
+            ++i;
+        }
     }
 
 }
@@ -120,17 +128,17 @@ void Frame::show_on_screenInsidePack(int index) //Контрол за карти
     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     bool SCROLLTRUE=false;
 
-
     for(int k = 0 ; k < pix[P].size() ; ++k){ // k номер картинки в паке
         if( index == k  ){
 
-            if( pix[P][k]->width() > WIDTH){
+            if( pix[P][k]->width() > WIDTH && pix[P][k]->height() > HEIGHT ){
                 mainLabelImage->setPixmap( *pix[P][k] );
                 if(SCROLLTRUE){
                     scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
                     scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
                 }
-                scrollArea->setWidgetResizable(true);
+                //scrollArea->setWidgetResizable(true);
+
                 mainLabelImage->setFixedSize(pix[P][k]->width(),pix[P][k]->height());
                 setSizeQLabel(pix[P][k]->width(),pix[P][k]->height());
 
@@ -155,7 +163,7 @@ void Frame::show_on_screenInsidePack(int index) //Контрол за карти
 void Frame::show_on_screenPacks(int index)
 {
     switchTraffic=true;
-    // слот в котором будет меняться картинка по первому комбообксу
+    // слот в котором будет меняться картинка по первому комбобоксу
     scrollArea=new QScrollArea(this);
     scrollArea->setWidget(mainLabelImage);
     gridLayout->addWidget(scrollArea,1,0,4,5,Qt::AlignCenter);

@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <stdio.h>
+#include <stdexcept>
 #include <filesystem>
 #include <string.h>
 using namespace std;
@@ -8,25 +9,38 @@ int main()
 {
 	try
 	{
-		MyFile("C:/qtProject/Work/fileopen/mytext.txt");
-		//MyFile("Ваша директория");
+		MyFile("C:/qtProject/Work/fileopen/mytext.txt");	
 	}
-	catch (invalid_argument&e)
+	catch (FILE* f)
 	{
-		cerr << e.what() << endl;
 		cout << "Exeption";
+		return -1;
+
+	}
+	catch (std::invalid_argument& s) {
+		cout << "Exeption NULL";
 		return -1;
 	}
 }
 void MyFile(const char * name)
 {
-	FILE* fp = fopen(name, "w");
+	FILE* fp = fopen(name,"w");
+	
 	if (name == "") {
-		throw invalid_argument("argument");
+	
+		throw (fp);
 	}
+	if (fp == NULL){
+		throw invalid_argument("No Open");
+	}
+	
 	else {
-		fprintf(fp, "Rodion Loskutov");
+		fputs("Loskutov Rodion ",fp);
+		
 	}
-	// возможны и другие проверки
 	fclose(fp);
+
+
+	// возможны и другие проверки
+	
 }
